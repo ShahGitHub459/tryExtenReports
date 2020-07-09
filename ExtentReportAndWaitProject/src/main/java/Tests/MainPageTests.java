@@ -1,28 +1,24 @@
 package Tests;
 
-import org.openqa.selenium.By;
+import java.util.List;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import Utility.BaseClass;
+import Utility.FrameWorkFunction;
 
 public class MainPageTests extends BaseClass {
+	public static FrameWorkFunction frameFunction;
+	
+	public static List<String> testCaseNameList;
+	public static int sizeofList;
  @BeforeClass
- public void initialize() {
-	 driver.get("https://nextbridge.com/");
-	 waitForPageLoad();
+ public void initialize() throws Throwable {
+	 frameFunction=new FrameWorkFunction(driver);
+
  }
 	@Test(priority=1)
-	public void verifyMainPage() {
-		driver.findElement(By.xpath("//*[@id=\"slide-8-layer-9\"]"));
-	}
-	@Test(priority=2)
-	public void verifyFailTestCase() {
-		driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div[1]/div/div[1]/div/div/div/div/div[3]"));
-	}
-	@Test(priority=3)
-	public void verifySuccessCase() {
-		driver.findElement(By.xpath("//*[@id=\"slide-8-layer-9\"]")).click();
+	public static void verifyMainPage() throws Throwable {
+		frameFunction.autoStepFunction();
 	}
 	
 }

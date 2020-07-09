@@ -32,10 +32,14 @@ public class TestListener extends BaseClass implements ITestListener{
 	public void onTestSuccess(ITestResult result) {
 		System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
 		ExtentTestManager.getTest().log(Status.PASS, "Test passed");
+		//StepsListener.stepsReporting(result);
+		ExtentTestManager.endTest();
+		ExtentManager.getInstance().flush();
+		
 	}
 
 	public void onTestFailure(ITestResult result) {
-
+		//StepsListener.stepsReporting(result);
 		try {
 			screentshotpath=GetScreenShot.capture(driver, result.getMethod().getMethodName());
 		} catch (IOException e) {
@@ -50,6 +54,8 @@ public class TestListener extends BaseClass implements ITestListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		ExtentTestManager.endTest();
+		ExtentManager.getInstance().flush();
 	}
 
 	public void onTestSkipped(ITestResult result) {

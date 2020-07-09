@@ -4,13 +4,13 @@ public class DriverManagerFactory {
 	public enum DriverType{
 		CHROME,FIREFOX,EDGE,IE;
 	}
-	public static DriverManager getDriverManager(DriverType type) {
+	public static DriverManager getDriverManager(String type) {
 		DriverManager driverManager = null;
 		switch (type) {
-		case CHROME:
+		case "CHROME":
 			driverManager=new ChromeDriverManager();
 			break;
-		case FIREFOX:
+		case "FIREFOX":
 			driverManager=new FireFoxDriverManager();
 			break;
 		default:
